@@ -48,14 +48,14 @@ class TestToolkit(unittest.TestCase):
         @validate_keys(expected_keys=["key1", "key2"])
         def make_request():
             return TestToolkit.MockRequestsResponse(status_code=200, data=[{"key1": "data1"}])
-        with pytest.raises(Exception):
+        with pytest.raises(ExpectedKeyError):
             make_request()
 
     def test_validate_keys_extra_found_key_raises_exception(self):
         @validate_keys(expected_keys=["key1", "key2"], suppress_exception_for_extra_found_keys=False)
         def make_request():
             return TestToolkit.MockRequestsResponse(status_code=200, data=[{"key1": "data1", "key2": "data2", "key3": "data3"}])
-        with pytest.raises(Exception):
+        with pytest.raises(ExpectedKeyError):
             make_request()
 
     def test_validate_keys_extra_found_key_exception_suppressed(self):
@@ -68,5 +68,5 @@ class TestToolkit(unittest.TestCase):
         @validate_keys(expected_keys=["key1", "key2"])
         def make_request():
             return TestToolkit.MockRequestsResponse(status_code=200, data=[{}])
-        with pytest.raises(Exception):
+        with pytest.raises(ExpectedKeyError):
             make_request()

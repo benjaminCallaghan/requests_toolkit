@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='requests_toolkit',
-    version='0.0.1',
+    version='0.0.2',
     description='Decorators and other tools for handling common patterns with the python requests module.',
     py_modules=["requests_toolkit"],
     package_dir={'': 'src'},

@@ -21,8 +21,7 @@ $ python -m pytest
 ```
 
 ## Usage
-All decorators will return a requests.Response object designed to simplify the
-handling of requests api calls.
+All decorators will return a requests.Response object.
 Example usage:
 validate_keys: expected data must specify the required keys and structure.
     suppress_exception_for_extra_found_keys has default value True, which means that

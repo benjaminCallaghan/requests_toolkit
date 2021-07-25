@@ -21,13 +21,13 @@ $ python -m pytest
 ```
 
 ## Usage
-All decorators will return a requests.Response object.
-Example usage:
-validate_keys: expected data must specify the required keys and structure.
+All decorators will return a requests.Response object.</br></br>
+Example usage:</br></br>
+<b>validate_keys:</b> expected data must specify the required keys and structure.
     suppress_exception_for_extra_found_keys has default value True, which means that
     the response can contain extra keys not expected without throwing exception.
-    But an exception will always be thrown for missing keys.
-handle_http_error: returns requests.Response except when throw_exception=True a requests.HTTPError
+    But an exception will always be thrown for missing expected keys.</br></br>
+<b>handle_http_error:</b> returns requests.Response except when throw_exception=True a requests.HTTPError
 ```python
 from requests_toolkit.json_tools import (handle_http_error, validate_keys)
 import requests

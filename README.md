@@ -19,3 +19,22 @@ To run tests
 ```bash
 $ python -m pytest
 ```
+
+## Usage
+All decorators will return a requests.Response object designed to simplify the
+handling of requests api calls.
+Example usage:
+validate_keys: expected data must specify the required keys and structure.
+    suppress_exception_for_extra_found_keys has default value True, which means that
+    the response can contain extra keys not expected without throwing exception.
+    But an exception will always be thrown for missing keys.
+handle_http_error: returns requests.Response except when throw_exception=True a requests.HTTPError
+```python
+from requests_toolkit.json_tools import (handle_http_error, validate_keys)
+import requests
+
+@handle_http_error(throw_exception=True)
+@validate_keys(expected_data={"key1": "", "key2": [{"key3": ""}]}, suppress_exception_for_extra_found_keys=False)
+def make_http_request():
+    return requests.get(url="https://myurl.com/api/json")
+```

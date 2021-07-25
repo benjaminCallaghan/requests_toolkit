@@ -76,7 +76,7 @@ class TestJSONTools(unittest.TestCase):
         with pytest.raises(ExpectedKeyError):
             make_request()
 
-    def test_multi_level_keys(self):
+    def test_traverse_json_multi_level_keys(self):
         test_cases = {
             "list_dict_list": [{"key1": [""]}],
             "list_dict_list_dict": [{"key1": [{"key2": ""}, {"key3": ""}]}],
